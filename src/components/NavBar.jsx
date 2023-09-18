@@ -36,7 +36,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="favourite-link" ref={favRef}>
-        <Link to="/favourites">Favourites</Link>
+        <Link to="/blog">Blog</Link>
       </div>
     </nav>
   );
