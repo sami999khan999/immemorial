@@ -30,7 +30,6 @@ export const useGsapShutterUnveil = (item, delay = 0, trig) => {
 export const useGesapDownStagger = (arr, duration = 0) => {
   useEffect(() => {
     const el = arr.map((item) => item.current);
-
     gsap.fromTo(
       el,
       {
@@ -44,6 +43,50 @@ export const useGesapDownStagger = (arr, duration = 0) => {
         stagger: 0.2,
         ease: Expo.easeIn,
         duration: duration,
+      }
+    );
+  }, []);
+};
+
+export const useGsapPhotoDrop = (arr) => {
+  useEffect(() => {
+    const el = arr.map((item) => item.current);
+
+    gsap.fromTo(
+      el,
+      {
+        y: "-100vh",
+        scale: 0,
+      },
+      {
+        y: 0,
+        scale: 1,
+        stagger: 0.1,
+        ease: Expo.easeOut,
+        duration: 0.8,
+        delay: 3,
+      }
+    );
+  }, []);
+};
+
+export const usePhotoLevitate = (arr, trig) => {
+  useEffect(() => {
+    const el = arr.map((item) => item.current);
+
+    gsap.fromTo(
+      el,
+      {
+        y: 0,
+      },
+      {
+        y: "-40%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+          trigger: trig.current,
+          scrub: 1,
+          toggleActions: "play reverse play reverse",
+        },
       }
     );
   }, []);
